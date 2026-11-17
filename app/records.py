@@ -11,16 +11,22 @@ def connect(path):
     return db
 
 def save_catalog(path,result):
-    with connect(path) as db:
+    db=connect(path)
+    try:
         for item in result['items']:db.execute('INSERT OR REPLACE INTO catalog VALUES (?,?,?)',(item['id'],result['edition'],json.dumps(item,ensure_ascii=False)))
         db.execute('INSERT OR REPLACE INTO progress VALUES (?,?)',('catalog',result['url']))
+        db.commit()
+    finally:db.close()
     return len(result['items'])
 
 def save_detail(path,result):
     item=result['item']
-    with connect(path) as db:
+    db=connect(path)
+    try:
         db.execute('INSERT INTO details (source_id,edition,payload) VALUES (?,?,?)',(item['id'],result['edition'],json.dumps(result,ensure_ascii=False)))
         db.execute('INSERT OR REPLACE INTO progress VALUES (?,?)',('detail',result['url']))
+        db.commit()
+    finally:db.close()
     return item['id']
 
 def list_receipts(path):
