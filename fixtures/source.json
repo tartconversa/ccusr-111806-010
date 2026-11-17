@@ -1,0 +1,25 @@
+{
+  "title": "媒体股公告与行情状态的发布时间采集",
+  "category": "上市公司公告",
+  "choice": "公告版本",
+  "revision": "正文版本",
+  "detail_label": "公告与状态",
+  "entity": "证券公告",
+  "fact": "公告正文",
+  "items": [
+    {
+      "id": "issuer-notice-a",
+      "name": "传媒公司甲",
+      "group": "甲",
+      "detail": "公告与状态甲",
+      "changed_detail": "公告与状态修订甲"
+    },
+    {
+      "id": "issuer-notice-b",
+      "name": "传媒公司乙",
+      "group": "乙",
+      "detail": "公告与状态乙",
+      "changed_detail": "公告与状态修订乙"
+    }
+  ]
+}
